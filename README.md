@@ -14,6 +14,7 @@ feddit_app/
 │ ├── test_app.py # Unit tests for the application
 ├── config.py # Configuration file for the application
 ├── requirements.txt # List of dependencies required for the application
+├── logging_config.py # Configuration for logging
 ├── README.md # Documentation file for the application
 
 1. **Install Python version 3.11 or above on your system.**
@@ -123,16 +124,23 @@ Replace `<repository-url>` with the actual URL of your repository and `<reposito
     ```
 Recommendations
 Asynchronous Processing:
-
 Celery: Celery is a distributed task queue that allows you to run long-running tasks asynchronously. You can offload the task of fetching comments from the external API to Celery workers, allowing the main application to remain responsive.
 AsyncIO: For I/O-bound tasks, using asyncio in Python can help you make non-blocking HTTP requests and process multiple requests concurrently.
 Batch Processing:
 Instead of fetching all comments at once, fetch them in smaller batches and process each batch independently. This reduces memory usage and improves responsiveness.
 Caching:
-
 Redis: Use Redis to cache API responses or partial results to avoid redundant API calls. This can significantly reduce the number of requests made to the external API.
 Serverless Functions:
 AWS Lambda: Use AWS Lambda functions to handle parts of the fetching and processing in parallel. This can be especially useful if the task can be broken down into smaller, independent units of work.
 Data Streaming:
-
 Apache Kafka: For continuous data ingestion and processing, consider using Kafka to stream data and process it in real-time.
+Handling and Monitoring
+Logging: Use Python’s built-in logging module to add logging throughout your application. This helps in monitoring the application’s behavior and debugging issues. Configure logging to output to both the console and a file for persistent logs.
+
+# Sample work flow attached below
+
+### Application run on production
+pip install gunicorn
+
+### You can start your Flask application with Gunicorn by running:
+`gunicorn -c gunicorn_config.py app:app`
