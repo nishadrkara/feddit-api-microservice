@@ -122,6 +122,16 @@ Replace `<repository-url>` with the actual URL of your repository and `<reposito
     ```bash
     flask run
     ```
+
+8. **Test the API using Swagger:**
+
+    Once the project is successfully installed, you can test the API using the Swagger API link. For example, open your web browser and navigate to:
+
+    ```plaintext
+    http://127.0.0.1:5000/
+    ```
+
+
 Recommendations
 Asynchronous Processing:
 Celery: Celery is a distributed task queue that allows you to run long-running tasks asynchronously. You can offload the task of fetching comments from the external API to Celery workers, allowing the main application to remain responsive.
@@ -138,7 +148,7 @@ Handling and Monitoring
 Logging: Use Python’s built-in logging module to add logging throughout your application. This helps in monitoring the application’s behavior and debugging issues. Configure logging to output to both the console and a file for persistent logs.
 
 # Sample work flow attached below
-
+.github/worflow folder
 ### Application run on production
 pip install gunicorn
 

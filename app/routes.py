@@ -6,7 +6,7 @@ from app.parser import user_id_parser, comment_parser
 api_namespace = Namespace('api', description='Feddit API')
 
 
-@api_namespace.route('/')
+@api_namespace.route('/docs')
 class CommentsByUser(Resource):
     def get(self, id):
         user_comments = fetch_user_comments(id)
@@ -50,5 +50,5 @@ class UserCommentByPolarity(Resource):
 
 
 def initialize_routes(api):
-    api.add_resource(CommentsByUser, '/user-comments/<int:id>/')
-    api.add_resource(UserCommentByPolarity, '/users-comments-by-polarity')
+    api.add_resource(CommentsByUser, '/v1/user-comments/<int:id>/')
+    api.add_resource(UserCommentByPolarity, '/v1/users-comments-by-polarity')
